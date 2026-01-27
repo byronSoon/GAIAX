@@ -1,0 +1,850 @@
+{
+  "packageType": "bpmn",
+  "items": [
+    {
+      "processId": "731165722091589",
+      "version": "1.0",
+      "processName": "New_Vendor_Application_Sub",
+      "definition": {
+        "Active": false,
+        "Property": {
+          "FormDataRelationshipType": "TaskID",
+          "DefaultFormId": "731161070170181",
+          "DefaultName": null,
+          "DefaultMobileForm": "",
+          "IconColor": "#258bfa",
+          "IconCls": "59681",
+          "Description": "",
+          "TaskDescTemplate": "",
+          "SNTableName": "BPMInstTasks",
+          "SNColumnName": "SerialNum",
+          "SNPrefix": "CMDs-\u003C%=DateTime.Today.ToString(\u0022yyyyMM\u0022)%\u003E-",
+          "SNColumns": 4,
+          "SNFrom": 4,
+          "SNIncrement": 1,
+          "SNDesc": "T-yyyyMMdd-{0001}",
+          "ReadForm": null,
+          "BizType": "",
+          "ShortName": "",
+          "MobileInitiation": true,
+          "Color": "#76dbb4",
+          "DotNetEnv": {
+            "ReferencedAssemblies": [
+              "System.dll",
+              "System.Data.dll"
+            ],
+            "Using": [
+              "using System;",
+              "using System.Threading.Tasks;",
+              "using System.IO;",
+              "using System.Text;",
+              "using System.Data;",
+              "using CodeFly;",
+              "using CodeFly.Org;",
+              "using CodeFly.WorkFlow;"
+            ]
+          },
+          "DataSecuritySetting": {
+            "dataSecretType": "Personal",
+            "cusSetting": {
+              "aces": []
+            }
+          }
+        },
+        "MessageGroups": [
+          {
+            "MessageCat": "NewTaskNormal",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "InformTask",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "RecedeBack",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "TimeoutNotify",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "Approved",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "Rejected",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "Aborted",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "Deleted",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "StepStopHumanOpt",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "ManualRemind",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "NoParticipantException",
+            "MessageItems": []
+          }
+        ],
+        "Events": [],
+        "GlobalTableIdentitys": [
+          {
+            "DataSourceName": "Default",
+            "TableName": "$$root",
+            "IsRepeatableTable": false
+          },
+          {
+            "DataSourceName": "Default",
+            "TableName": "Bank_Data",
+            "IsRepeatableTable": true
+          },
+          {
+            "DataSourceName": "Default",
+            "TableName": "Contact_Person",
+            "IsRepeatableTable": true
+          }
+        ],
+        "Nodes": [
+          {
+            "Name": "Start",
+            "NodeId": "node_ext-1401",
+            "Sprite": "{\u0022translationX\u0022:152.77777099609375,\u0022translationY\u0022:250,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022Start\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Start\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Start",
+            "ElementTypeName": "StartNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "Form": null,
+            "MobileForm": "",
+            "BizTypeInheri": false,
+            "BizType": null,
+            "RecedeBackGroup": "",
+            "RecedeBackExtGroups": [],
+            "PickBackUnProcessedStepOnly": true,
+            "Permision": [
+              "Abort",
+              "Inform"
+            ],
+            "SystemLinks": [
+              {
+                "SystemLinkType": "DirectSend",
+                "Enabled": false,
+                "ValidationGroup": ""
+              }
+            ],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ],
+            "ControlDataSet": {
+              "Tables": []
+            },
+            "InitCreateRecordSet": {
+              "Tables": []
+            }
+          },
+          {
+            "Name": "End",
+            "NodeId": "node_ext-1402",
+            "Sprite": "{\u0022translationX\u0022:1310.0372314453125,\u0022translationY\u0022:250,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022End\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.End\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.End",
+            "ElementTypeName": "EndNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "EndType": "Approve"
+          },
+          {
+            "Name": "System Auto Approval",
+            "NodeId": "node_ext-26970",
+            "Sprite": "{\u0022translationX\u0022:298.55560302734375,\u0022translationY\u0022:250,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022System Auto Approval\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Activity\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Activity",
+            "ElementTypeName": "ActivityNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "Form": null,
+            "MobileForm": "",
+            "BizTypeInheri": true,
+            "BizType": null,
+            "RecedeBackGroup": "",
+            "RecedeBackExtGroups": [],
+            "PickBackUnProcessedStepOnly": true,
+            "Permision": [
+              "Transfer",
+              "BatchApprove",
+              "Consign",
+              "Inform"
+            ],
+            "SystemLinks": [
+              {
+                "SystemLinkType": "DirectSend",
+                "Enabled": false,
+                "ValidationGroup": ""
+              }
+            ],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ],
+            "ControlDataSet": {
+              "Tables": []
+            },
+            "InitCreateRecordSet": {
+              "Tables": []
+            },
+            "Participants": [
+              {
+                "ParticipantType": 3,
+                "LParam1": 0,
+                "LParam2": 0,
+                "SParam1": null,
+                "SParam2": null,
+                "SParam3": null,
+                "SParam4": null,
+                "SParam5": null,
+                "Express": "Initiator",
+                "Include": true,
+                "Exclude": false,
+                "IsValid": true,
+                "DisplayString": "\u63D0\u4EA4\u4EBA",
+                "RuntimeDisplayString": null
+              }
+            ],
+            "ParticipantPolicy": {
+              "BParam1": true,
+              "PolicyType": "Share"
+            },
+            "NoParticipantsAction": "PreventSubmit",
+            "JumpIfSameOwnerWithInitiator": false,
+            "JumpIfSameOwnerWithPrevStep": false,
+            "JumpIfProcessed": false,
+            "TimeoutRule": {
+              "Calendar": {
+                "CalendarType": "Specific",
+                "CalendarName": "Default"
+              },
+              "Deadline": {
+                "Enabled": true,
+                "DeadlineType": "Absolute",
+                "Hours": 2,
+                "Date": "FormDataSet[\u0022$$root.Start_Time\u0022]"
+              },
+              "Notify": {
+                "Enabled": false,
+                "FirsttimeHours": 1,
+                "FirsttimeMinutes": 0,
+                "Repeatable": true,
+                "RepeatHours": 1,
+                "RepeatMinutes": 0,
+                "UpgradeEnabled": false,
+                "UpTimeoutHours": 2,
+                "Recipients": [],
+                "MessageItems": []
+              },
+              "Activity": {
+                "Enabled": true,
+                "ActivityType": "AutoProcess",
+                "ActionName": "Agree",
+                "GotoStep": null
+              }
+            }
+          },
+          {
+            "Name": "SQL",
+            "NodeId": "node_ext-31269",
+            "Sprite": "{\u0022translationX\u0022:467.81494140625,\u0022translationY\u0022:250.370361328125,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022SQL\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.SQLPlugin\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.SQLPlugin",
+            "ElementTypeName": "SQLPluginNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "DataSourceName": "763108719505477",
+            "CommandText": "-- \u66F4\u65B0 1: \u5EFA\u7ACB Vendor_Form_Link \u95DC\u806F\uFF08\u4F7F\u7528 TaskID\uFF09\nUPDATE S\nSET S.Vendor_Form_Link = M.TaskID  -- \u6539\u70BA\u5B58 TaskID\nFROM BDS_New_Vendor_Application_Sub AS S\nINNER JOIN BDS_New_Vendor_Application AS M\n    ON  M.Vendor_Name = S.Vendor_Name \n    AND M.Tax = S.Tax \n    AND M.Email = S.Email \n    AND M.Vendor_Type = S.Vendor_Type\nWHERE M.TaskID = \u0027\u003C%=FormDataSet[\u0022$$root.Vendor_Form_Link\u0022]%\u003E\u0027\n  AND S.Vendor_Form_Link IS NULL;\n\n-- \u66F4\u65B0 2: \u66F4\u65B0\u4E3B\u8868\u7684\u5730\u5740\u8CC7\u8A0A\nUPDATE M\nSET \n    M.Country = S.Country,\n    M.City = S.City,\n    M.Postal_Code = S.Postal_Code,\n    M.Street = S.Street,\n    M.Country_ID = S.Country_ID,\n    M.City_ID = S.City_ID\nFROM BDS_New_Vendor_Application AS M\nINNER JOIN BDS_New_Vendor_Application_Sub AS S \n    ON M.Vendor_Name = S.Vendor_Name \n    AND M.Tax = S.Tax \n    AND M.Email = S.Email \n    AND M.Vendor_Type = S.Vendor_Type\nWHERE M.TaskID = \u0027\u003C%=FormDataSet[\u0022$$root.Vendor_Form_Link\u0022]%\u003E\u0027;\n\n-- \u66F4\u65B0 3: \u4F7F\u7528 ROW_NUMBER \u6309\u9806\u5E8F\u5339\u914D\uFF08\u6700\u7D42\u4FEE\u6B63\u7248\uFF09\nUPDATE S\nSET \n    S.Transaction_Details_Company = EntityRN.Company,\n    S.Transaction_Details_Region = EntityRN.Region,\n    S.Transaction_Details_Site = EntityRN.Site\nFROM BDS_New_Vendor_Application_Sub AS S\nINNER JOIN (\n    SELECT \n        S.ItemId AS SubItemId,\n        S.Vendor_Form_Link,\n        ROW_NUMBER() OVER (PARTITION BY S.Vendor_Form_Link ORDER BY S.ItemId) AS RowNum\n    FROM BDS_New_Vendor_Application_Sub S\n    WHERE S.Vendor_Form_Link IS NOT NULL\n) SubRN ON S.ItemId = SubRN.SubItemId\n-- \u900F\u904E TaskID \u627E\u5230 Main \u8868\nINNER JOIN BDS_New_Vendor_Application AS M\n    ON M.TaskID = SubRN.Vendor_Form_Link  -- \u7528 TaskID \u5339\u914D\nINNER JOIN (\n    SELECT \n        T.ParentItemId,\n        T.Company,\n        T.Region,\n        T.Site,\n        ROW_NUMBER() OVER (PARTITION BY T.ParentItemId ORDER BY T.OrderIndex, T.ItemId) AS RowNum\n    FROM BDS_New_Vendor_Application_Transaction_Entity T\n    WHERE T.TaskID = \u0027\u003C%=FormDataSet[\u0022$$root.Vendor_Form_Link\u0022]%\u003E\u0027\n      AND T.ParentItemId IS NOT NULL\n) EntityRN ON M.ItemId = EntityRN.ParentItemId  -- Main.ItemId \u5C0D\u61C9 Entity.ParentItemId\n           AND SubRN.RowNum = EntityRN.RowNum    -- \u6309\u9806\u5E8F\u5339\u914D\nWHERE S.Vendor_Form_Link IS NOT NULL;\n\n-- \u66F4\u65B0 4: \u66F4\u65B0 Role \u548C RoleID\nUPDATE S\nSET \n    S.SupplyChainRole = \u0027SupplyChain_\u0027 \u002B S.Transaction_Details_Site,\n    S.SupplyChainRoleID = R1.Id,\n    S.ACCTRole = \u0027ACCT_\u0027 \u002B S.Transaction_Details_Site,\n    S.ACCTRoleID = R2.Id,\n    S.TOMRole = \u0027TOM_\u0027 \u002B S.Transaction_Details_Site,\n    S.TOMRoleID = R3.Id,\n    S.SPECRole = \u0027SupplyChain_\u0027 \u002B S.Transaction_Details_Site,\n    S.SPECRoleID = R4.Id\nFROM BDS_New_Vendor_Application_Sub AS S\nLEFT JOIN [FZBPM].[dbo].[bpm_org_role] AS R1\n    ON R1.RoleName = (\u0027SupplyChain_\u0027 \u002B S.Transaction_Details_Site) COLLATE SQL_Latin1_General_CP1_CI_AS\nLEFT JOIN [FZBPM].[dbo].[bpm_org_role] AS R2\n    ON R2.RoleName = (\u0027ACCT_\u0027 \u002B S.Transaction_Details_Site) COLLATE SQL_Latin1_General_CP1_CI_AS\nLEFT JOIN [FZBPM].[dbo].[bpm_org_role] AS R3\n    ON R3.RoleName = (\u0027TOM_\u0027 \u002B S.Transaction_Details_Site) COLLATE SQL_Latin1_General_CP1_CI_AS\nLEFT JOIN [FZBPM].[dbo].[bpm_org_role] AS R4\n    ON R4.RoleName = (\u0027SupplyChain_\u0027 \u002B S.Transaction_Details_Site) COLLATE SQL_Latin1_General_CP1_CI_AS\nWHERE S.Vendor_Form_Link IS NOT NULL\n  AND S.Transaction_Details_Site IS NOT NULL;"
+          },
+          {
+            "Name": "Applicant fills in information",
+            "NodeId": "node_ext-31270",
+            "Sprite": "{\u0022translationX\u0022:611.8889770507812,\u0022translationY\u0022:250,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022Applicant fills in information\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Activity\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Activity",
+            "ElementTypeName": "ActivityNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "Form": null,
+            "MobileForm": "",
+            "BizTypeInheri": true,
+            "BizType": null,
+            "RecedeBackGroup": "",
+            "RecedeBackExtGroups": [],
+            "PickBackUnProcessedStepOnly": true,
+            "Permision": [
+              "Transfer",
+              "Inform"
+            ],
+            "SystemLinks": [
+              {
+                "SystemLinkType": "DirectSend",
+                "Enabled": false,
+                "ValidationGroup": ""
+              }
+            ],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ],
+            "ControlDataSet": {
+              "Tables": []
+            },
+            "InitCreateRecordSet": {
+              "Tables": []
+            },
+            "Participants": [
+              {
+                "ParticipantType": 3,
+                "LParam1": 5,
+                "LParam2": 0,
+                "SParam1": "test",
+                "SParam2": null,
+                "SParam3": null,
+                "SParam4": null,
+                "SParam5": null,
+                "Express": "List\u003CUser\u003E users = new List\u003CUser\u003E();\r\nstring[] accs = Convert.ToString(\u0022test\u0022).Split(\u0027,\u0027);\r\nforeach(string acc in accs)\r\n{\r\n    User user = Context.OrgService.GetUser(acc);\r\n    if (!users.Contains(user))\r\n        users.Add(user);\r\n}\r\nreturn users;\r\n",
+                "Include": true,
+                "Exclude": false,
+                "IsValid": true,
+                "DisplayString": "test",
+                "RuntimeDisplayString": null
+              }
+            ],
+            "ParticipantPolicy": {
+              "BParam1": true,
+              "PolicyType": "Share"
+            },
+            "NoParticipantsAction": "PreventSubmit",
+            "JumpIfSameOwnerWithInitiator": false,
+            "JumpIfSameOwnerWithPrevStep": false,
+            "JumpIfProcessed": false,
+            "TimeoutRule": {
+              "Calendar": {
+                "CalendarType": "StepOwner",
+                "CalendarName": ""
+              },
+              "Deadline": {
+                "Enabled": false,
+                "DeadlineType": "AfterEnterStep",
+                "Hours": 2
+              },
+              "Notify": {
+                "Enabled": false,
+                "FirsttimeHours": 1,
+                "FirsttimeMinutes": 0,
+                "Repeatable": true,
+                "RepeatHours": 1,
+                "RepeatMinutes": 0,
+                "UpgradeEnabled": false,
+                "UpTimeoutHours": 2,
+                "Recipients": [],
+                "MessageItems": []
+              },
+              "Activity": {
+                "Enabled": false,
+                "ActivityType": "AutoProcess",
+                "ActionName": null,
+                "GotoStep": null
+              }
+            }
+          },
+          {
+            "Name": "SupplyChainRole",
+            "NodeId": "node_ext-6558",
+            "Sprite": "{\u0022translationX\u0022:763,\u0022translationY\u0022:250.370361328125,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022SupplyChainRole\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Activity\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Activity",
+            "ElementTypeName": "ActivityNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "Form": null,
+            "MobileForm": "",
+            "BizTypeInheri": true,
+            "BizType": null,
+            "RecedeBackGroup": "",
+            "RecedeBackExtGroups": [],
+            "PickBackUnProcessedStepOnly": true,
+            "Permision": [
+              "Transfer",
+              "Inform"
+            ],
+            "SystemLinks": [
+              {
+                "SystemLinkType": "DirectSend",
+                "Enabled": false,
+                "ValidationGroup": ""
+              }
+            ],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ],
+            "ControlDataSet": {
+              "Tables": []
+            },
+            "InitCreateRecordSet": {
+              "Tables": []
+            },
+            "Participants": [
+              {
+                "ParticipantType": 7,
+                "LParam1": 0,
+                "LParam2": 0,
+                "SParam1": "SupplyChain",
+                "SParam2": null,
+                "SParam3": null,
+                "SParam4": null,
+                "SParam5": null,
+                "Express": "var role=FormDataSet[\u0022$$root.SupplyChainRoleID\u0022].ToString();\nreturn Context.OrgService.GetRoleMembers(role);",
+                "Include": true,
+                "Exclude": false,
+                "IsValid": true,
+                "DisplayString": "SupplyChain",
+                "RuntimeDisplayString": null
+              }
+            ],
+            "ParticipantPolicy": {
+              "BParam1": true,
+              "PolicyType": "Share"
+            },
+            "NoParticipantsAction": "PreventSubmit",
+            "JumpIfSameOwnerWithInitiator": false,
+            "JumpIfSameOwnerWithPrevStep": false,
+            "JumpIfProcessed": false,
+            "TimeoutRule": {
+              "Calendar": {
+                "CalendarType": "StepOwner",
+                "CalendarName": ""
+              },
+              "Deadline": {
+                "Enabled": false,
+                "DeadlineType": "AfterEnterStep",
+                "Hours": 2
+              },
+              "Notify": {
+                "Enabled": false,
+                "FirsttimeHours": 1,
+                "FirsttimeMinutes": 0,
+                "Repeatable": true,
+                "RepeatHours": 1,
+                "RepeatMinutes": 0,
+                "UpgradeEnabled": false,
+                "UpTimeoutHours": 2,
+                "Recipients": [],
+                "MessageItems": []
+              },
+              "Activity": {
+                "Enabled": false,
+                "ActivityType": "AutoProcess",
+                "ActionName": null,
+                "GotoStep": null
+              }
+            }
+          },
+          {
+            "Name": "ACCTRole",
+            "NodeId": "node_ext-6558",
+            "Sprite": "{\u0022translationX\u0022:887.4444580078125,\u0022translationY\u0022:250.370361328125,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022ACCTRole\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Activity\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Activity",
+            "ElementTypeName": "ActivityNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "Form": null,
+            "MobileForm": "",
+            "BizTypeInheri": true,
+            "BizType": null,
+            "RecedeBackGroup": "",
+            "RecedeBackExtGroups": [],
+            "PickBackUnProcessedStepOnly": true,
+            "Permision": [
+              "Transfer",
+              "Inform"
+            ],
+            "SystemLinks": [
+              {
+                "SystemLinkType": "DirectSend",
+                "Enabled": false,
+                "ValidationGroup": ""
+              }
+            ],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ],
+            "ControlDataSet": {
+              "Tables": []
+            },
+            "InitCreateRecordSet": {
+              "Tables": []
+            },
+            "Participants": [
+              {
+                "ParticipantType": 7,
+                "LParam1": 0,
+                "LParam2": 0,
+                "SParam1": "ACCTRole",
+                "SParam2": null,
+                "SParam3": null,
+                "SParam4": null,
+                "SParam5": null,
+                "Express": "var role=FormDataSet[\u0022$$root.ACCTRoleID\u0022].ToString();\nreturn Context.OrgService.GetRoleMembers(role);",
+                "Include": true,
+                "Exclude": false,
+                "IsValid": true,
+                "DisplayString": "ACCTRole",
+                "RuntimeDisplayString": null
+              }
+            ],
+            "ParticipantPolicy": {
+              "BParam1": true,
+              "PolicyType": "Share"
+            },
+            "NoParticipantsAction": "PreventSubmit",
+            "JumpIfSameOwnerWithInitiator": false,
+            "JumpIfSameOwnerWithPrevStep": false,
+            "JumpIfProcessed": false,
+            "TimeoutRule": {
+              "Calendar": {
+                "CalendarType": "StepOwner",
+                "CalendarName": ""
+              },
+              "Deadline": {
+                "Enabled": false,
+                "DeadlineType": "AfterEnterStep",
+                "Hours": 2
+              },
+              "Notify": {
+                "Enabled": false,
+                "FirsttimeHours": 1,
+                "FirsttimeMinutes": 0,
+                "Repeatable": true,
+                "RepeatHours": 1,
+                "RepeatMinutes": 0,
+                "UpgradeEnabled": false,
+                "UpTimeoutHours": 2,
+                "Recipients": [],
+                "MessageItems": []
+              },
+              "Activity": {
+                "Enabled": false,
+                "ActivityType": "AutoProcess",
+                "ActionName": null,
+                "GotoStep": null
+              }
+            }
+          },
+          {
+            "Name": "TOMRole",
+            "NodeId": "node_ext-6558",
+            "Sprite": "{\u0022translationX\u0022:1055.222412109375,\u0022translationY\u0022:250.370361328125,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022TOMRole\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Activity\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Activity",
+            "ElementTypeName": "ActivityNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "Form": null,
+            "MobileForm": "",
+            "BizTypeInheri": true,
+            "BizType": null,
+            "RecedeBackGroup": "",
+            "RecedeBackExtGroups": [],
+            "PickBackUnProcessedStepOnly": true,
+            "Permision": [
+              "Transfer",
+              "Inform"
+            ],
+            "SystemLinks": [
+              {
+                "SystemLinkType": "DirectSend",
+                "Enabled": false,
+                "ValidationGroup": ""
+              }
+            ],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ],
+            "ControlDataSet": {
+              "Tables": []
+            },
+            "InitCreateRecordSet": {
+              "Tables": []
+            },
+            "Participants": [
+              {
+                "ParticipantType": 7,
+                "LParam1": 0,
+                "LParam2": 0,
+                "SParam1": "TOMRole",
+                "SParam2": null,
+                "SParam3": null,
+                "SParam4": null,
+                "SParam5": null,
+                "Express": "var role=FormDataSet[\u0022$$root.TOMRoleID\u0022].ToString();\nreturn Context.OrgService.GetRoleMembers(role);",
+                "Include": true,
+                "Exclude": false,
+                "IsValid": true,
+                "DisplayString": "TOMRole",
+                "RuntimeDisplayString": null
+              }
+            ],
+            "ParticipantPolicy": {
+              "BParam1": true,
+              "PolicyType": "Share"
+            },
+            "NoParticipantsAction": "PreventSubmit",
+            "JumpIfSameOwnerWithInitiator": false,
+            "JumpIfSameOwnerWithPrevStep": false,
+            "JumpIfProcessed": false,
+            "TimeoutRule": {
+              "Calendar": {
+                "CalendarType": "StepOwner",
+                "CalendarName": ""
+              },
+              "Deadline": {
+                "Enabled": false,
+                "DeadlineType": "AfterEnterStep",
+                "Hours": 2
+              },
+              "Notify": {
+                "Enabled": false,
+                "FirsttimeHours": 1,
+                "FirsttimeMinutes": 0,
+                "Repeatable": true,
+                "RepeatHours": 1,
+                "RepeatMinutes": 0,
+                "UpgradeEnabled": false,
+                "UpTimeoutHours": 2,
+                "Recipients": [],
+                "MessageItems": []
+              },
+              "Activity": {
+                "Enabled": false,
+                "ActivityType": "AutoProcess",
+                "ActionName": null,
+                "GotoStep": null
+              }
+            }
+          }
+        ],
+        "Links": [
+          {
+            "DisplayString": "\u540C\u610F",
+            "FromNodeId": "SupplyChainRole",
+            "FromPoint": "ActivityRightMiddle",
+            "ToNodeId": "ACCTRole",
+            "ToPoint": "ActivityLeftMiddle",
+            "LineType": "ZigZag",
+            "LinkID": "line_ext-3603",
+            "Sprite": "{\u0022translationX\u0022:20,\u0022translationY\u0022:20,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022#4677bf\u0022,\u0022dockIndex\u0022:1,\u0022points\u0022:[{\u0022x\u0022:776,\u0022y\u0022:246.370361328125},{\u0022x\u0022:865.4444580078125,\u0022y\u0022:246.370361328125}],\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022\\u540c\\u610f\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false},\u0022startArrow\u0022:{\u0022type\u0022:\u0022none\u0022},\u0022endArrow\u0022:{\u0022type\u0022:\u0022solidArrow\u0022}},\u0022xclass\u0022:\u0022ZHYSoft.src.flowchart.link.ZigZag\u0022,\u0022surfaceName\u0022:\u0022link\u0022}",
+            "ConditionType": "True",
+            "ValidationGroup": null,
+            "ProcessConfirmType": "None",
+            "PromptMessage": "",
+            "DefaultRoute": false,
+            "Events": []
+          },
+          {
+            "DisplayString": "\u540C\u610F",
+            "FromNodeId": "ACCTRole",
+            "FromPoint": "ActivityRightMiddle",
+            "ToNodeId": "TOMRole",
+            "ToPoint": "ActivityLeftMiddle",
+            "LineType": "ZigZag",
+            "LinkID": "line_ext-3604",
+            "Sprite": "{\u0022translationX\u0022:20,\u0022translationY\u0022:20,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022#4677bf\u0022,\u0022dockIndex\u0022:1,\u0022points\u0022:[{\u0022x\u0022:900.4444580078125,\u0022y\u0022:246.370361328125},{\u0022x\u0022:1033.222412109375,\u0022y\u0022:246.370361328125}],\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022\\u540c\\u610f\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false},\u0022startArrow\u0022:{\u0022type\u0022:\u0022none\u0022},\u0022endArrow\u0022:{\u0022type\u0022:\u0022solidArrow\u0022}},\u0022xclass\u0022:\u0022ZHYSoft.src.flowchart.link.ZigZag\u0022,\u0022surfaceName\u0022:\u0022link\u0022}",
+            "ConditionType": "True",
+            "ValidationGroup": null,
+            "ProcessConfirmType": "None",
+            "PromptMessage": "",
+            "DefaultRoute": false,
+            "Events": []
+          },
+          {
+            "DisplayString": "\u540C\u610F",
+            "FromNodeId": "TOMRole",
+            "FromPoint": "ActivityRightMiddle",
+            "ToNodeId": "End",
+            "ToPoint": "ActivityLeftMiddle",
+            "LineType": "ZigZag",
+            "LinkID": "line_ext-3605",
+            "Sprite": "{\u0022translationX\u0022:0,\u0022translationY\u0022:0,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022#4677bf\u0022,\u0022dockIndex\u0022:1,\u0022points\u0022:[{\u0022x\u0022:1088.222412109375,\u0022y\u0022:266.370361328125},{\u0022x\u0022:1308.0372314453125,\u0022y\u0022:266}],\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022\\u540c\\u610f\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false},\u0022startArrow\u0022:{\u0022type\u0022:\u0022none\u0022},\u0022endArrow\u0022:{\u0022type\u0022:\u0022solidArrow\u0022}},\u0022xclass\u0022:\u0022ZHYSoft.src.flowchart.link.ZigZag\u0022,\u0022surfaceName\u0022:\u0022link\u0022}",
+            "ConditionType": "True",
+            "ValidationGroup": null,
+            "ProcessConfirmType": "None",
+            "PromptMessage": "",
+            "DefaultRoute": false,
+            "Events": []
+          },
+          {
+            "DisplayString": "Agree",
+            "FromNodeId": "System Auto Approval",
+            "FromPoint": "ActivityRightMiddle",
+            "ToNodeId": "SQL",
+            "ToPoint": "ActivityLeftMiddle",
+            "LineType": "ZigZag",
+            "LinkID": "line_ext-3606",
+            "Sprite": "{\u0022translationX\u0022:20,\u0022translationY\u0022:20,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022#4677bf\u0022,\u0022dockIndex\u0022:1,\u0022points\u0022:[{\u0022x\u0022:311.55560302734375,\u0022y\u0022:246},{\u0022x\u0022:445.81494140625,\u0022y\u0022:246.370361328125}],\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022Agree\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false},\u0022startArrow\u0022:{\u0022type\u0022:\u0022none\u0022},\u0022endArrow\u0022:{\u0022type\u0022:\u0022solidArrow\u0022}},\u0022xclass\u0022:\u0022ZHYSoft.src.flowchart.link.ZigZag\u0022,\u0022surfaceName\u0022:\u0022link\u0022}",
+            "ConditionType": "True",
+            "ValidationGroup": "",
+            "ProcessConfirmType": "None",
+            "PromptMessage": "",
+            "DefaultRoute": false,
+            "Events": []
+          },
+          {
+            "DisplayString": "Agree",
+            "FromNodeId": "Start",
+            "FromPoint": "ActivityRightMiddle",
+            "ToNodeId": "System Auto Approval",
+            "ToPoint": "ActivityLeftMiddle",
+            "LineType": "ZigZag",
+            "LinkID": "line_ext-3607",
+            "Sprite": "{\u0022translationX\u0022:20,\u0022translationY\u0022:20,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022#4677bf\u0022,\u0022dockIndex\u0022:1,\u0022points\u0022:[{\u0022x\u0022:165.77777099609375,\u0022y\u0022:246},{\u0022x\u0022:276.55560302734375,\u0022y\u0022:246}],\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022Agree\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false},\u0022startArrow\u0022:{\u0022type\u0022:\u0022none\u0022},\u0022endArrow\u0022:{\u0022type\u0022:\u0022solidArrow\u0022}},\u0022xclass\u0022:\u0022ZHYSoft.src.flowchart.link.ZigZag\u0022,\u0022surfaceName\u0022:\u0022link\u0022}",
+            "ConditionType": "True",
+            "ValidationGroup": "",
+            "ProcessConfirmType": "None",
+            "PromptMessage": "",
+            "DefaultRoute": false,
+            "Events": []
+          },
+          {
+            "DisplayString": null,
+            "FromNodeId": "SQL",
+            "FromPoint": "ActivityRightMiddle",
+            "ToNodeId": "Applicant fills in information",
+            "ToPoint": "ActivityLeftMiddle",
+            "LineType": "ZigZag",
+            "LinkID": "line_ext-3608",
+            "Sprite": "{\u0022translationX\u0022:127.407470703125,\u0022translationY\u0022:74.81478881835938,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022#4677bf\u0022,\u0022dockIndex\u0022:1,\u0022points\u0022:[{\u0022x\u0022:373.407470703125,\u0022y\u0022:191.55557250976562},{\u0022x\u0022:482.48150634765625,\u0022y\u0022:191.18521118164062}],\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false},\u0022startArrow\u0022:{\u0022type\u0022:\u0022none\u0022},\u0022endArrow\u0022:{\u0022type\u0022:\u0022solidArrow\u0022}},\u0022xclass\u0022:\u0022ZHYSoft.src.flowchart.link.ZigZag\u0022,\u0022surfaceName\u0022:\u0022link\u0022}",
+            "ConditionType": "True",
+            "ValidationGroup": null,
+            "ProcessConfirmType": "None",
+            "PromptMessage": "",
+            "DefaultRoute": false,
+            "Events": []
+          },
+          {
+            "DisplayString": "\u540C\u610F",
+            "FromNodeId": "Applicant fills in information",
+            "FromPoint": "ActivityRightMiddle",
+            "ToNodeId": "SupplyChainRole",
+            "ToPoint": "ActivityLeftMiddle",
+            "LineType": "ZigZag",
+            "LinkID": "line_ext-3609",
+            "Sprite": "{\u0022translationX\u0022:0,\u0022translationY\u0022:0,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022#4677bf\u0022,\u0022dockIndex\u0022:1,\u0022points\u0022:[{\u0022x\u0022:644.8889770507812,\u0022y\u0022:266},{\u0022x\u0022:761,\u0022y\u0022:266.370361328125}],\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022\\u540c\\u610f\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false},\u0022startArrow\u0022:{\u0022type\u0022:\u0022none\u0022},\u0022endArrow\u0022:{\u0022type\u0022:\u0022solidArrow\u0022}},\u0022xclass\u0022:\u0022ZHYSoft.src.flowchart.link.ZigZag\u0022,\u0022surfaceName\u0022:\u0022link\u0022}",
+            "ConditionType": "True",
+            "ValidationGroup": null,
+            "ProcessConfirmType": "None",
+            "PromptMessage": "",
+            "DefaultRoute": false,
+            "Events": []
+          }
+        ]
+      }
+    }
+  ]
+}
