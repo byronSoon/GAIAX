@@ -1,0 +1,3811 @@
+{
+  "packageType": "bpmn",
+  "items": [
+    {
+      "processId": "731163289362501",
+      "version": "1.1",
+      "processName": "New_Vendor_Application",
+      "definition": {
+        "Active": false,
+        "Property": {
+          "FormDataRelationshipType": "TaskID",
+          "DefaultFormId": "728383890575429",
+          "DefaultName": null,
+          "DefaultMobileForm": "",
+          "IconColor": "",
+          "IconCls": "",
+          "Description": "",
+          "TaskDescTemplate": "Vendor Name:\u003C%=FormDataSet[\u0022$$root.Vendor_Name\u0022]%\u003E\u003Cbr\u003E\n\u003C%=FormDataSet[\u0022Transaction_Entity.Company\u0022]%\u003E  \u003C%=FormDataSet[\u0022Transaction_Entity.Region\u0022]%\u003E  \u003C%=FormDataSet[\u0022Transaction_Entity.Site\u0022]%\u003E",
+          "SNTableName": "BPMInstTasks",
+          "SNColumnName": "SerialNum",
+          "SNPrefix": "VMD-\u003C%=DateTime.Today.ToString(\u0022yyyyMM\u0022)%\u003E-",
+          "SNColumns": 4,
+          "SNFrom": 4,
+          "SNIncrement": 1,
+          "SNDesc": "T-yyyyMMdd-{0001}",
+          "ReadForm": null,
+          "BizType": "",
+          "ShortName": "",
+          "MobileInitiation": true,
+          "Color": "#76dbb4",
+          "DotNetEnv": {
+            "ReferencedAssemblies": [
+              "System.dll",
+              "System.Data.dll"
+            ],
+            "Using": [
+              "using System;",
+              "using System.Threading.Tasks;",
+              "using System.IO;",
+              "using System.Text;",
+              "using System.Data;",
+              "using CodeFly;",
+              "using CodeFly.Org;",
+              "using CodeFly.WorkFlow;"
+            ]
+          },
+          "DataSecuritySetting": {
+            "dataSecretType": "Personal",
+            "cusSetting": {
+              "aces": []
+            }
+          }
+        },
+        "MessageGroups": [
+          {
+            "MessageCat": "NewTaskNormal",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "InformTask",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "RecedeBack",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "TimeoutNotify",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "Approved",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "Rejected",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "Aborted",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "Deleted",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "StepStopHumanOpt",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "ManualRemind",
+            "MessageItems": []
+          },
+          {
+            "MessageCat": "NoParticipantException",
+            "MessageItems": []
+          }
+        ],
+        "Events": [],
+        "GlobalTableIdentitys": [
+          {
+            "DataSourceName": "Default",
+            "TableName": "$$root",
+            "IsRepeatableTable": false
+          },
+          {
+            "DataSourceName": "Default",
+            "TableName": "Transaction_Entity",
+            "IsRepeatableTable": true
+          }
+        ],
+        "Nodes": [
+          {
+            "Name": "Start",
+            "NodeId": "node_ext-6413",
+            "Sprite": "{\u0022translationX\u0022:34.6444091796875,\u0022translationY\u0022:212,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022Start\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Start\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Start",
+            "ElementTypeName": "StartNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "Form": null,
+            "MobileForm": null,
+            "BizTypeInheri": false,
+            "BizType": null,
+            "RecedeBackGroup": "",
+            "RecedeBackExtGroups": [],
+            "PickBackUnProcessedStepOnly": true,
+            "Permision": [
+              "Abort",
+              "Public",
+              "InviteIndicate",
+              "Inform",
+              "MobileApprove"
+            ],
+            "SystemLinks": [],
+            "MessageItems": [],
+            "ControlDataSet": {
+              "Tables": []
+            },
+            "InitCreateRecordSet": {
+              "Tables": []
+            }
+          },
+          {
+            "Name": "Vendor Details",
+            "NodeId": "node_ext-6414",
+            "Sprite": "{\u0022translationX\u0022:405.97772216796875,\u0022translationY\u0022:212,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022Vendor Details\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.CallProcess\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.CallProcess",
+            "ElementTypeName": "CallProcessNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "ServerName": "",
+            "CallProcess": "New_Vendor_Application_Sub",
+            "CallProcessId": "731165722091589",
+            "WaitingChildProcessReturn": true,
+            "ApporveStartStep": true,
+            "JumpIfNoParticipants": false,
+            "ChildTaskIDSaveField": "Transaction_Entity.Detail",
+            "Participants": [
+              {
+                "ParticipantType": 7,
+                "LParam1": 0,
+                "LParam2": 0,
+                "SParam1": "FormDataSet[\u0022Transaction_Entity.HandleAccount\u0022]",
+                "SParam2": null,
+                "SParam3": null,
+                "SParam4": null,
+                "SParam5": null,
+                "Express": "List\u003CUser\u003E users = new List\u003CUser\u003E();\nint num = 1; \nforeach(WFDataRow row in FormDataSet.Tables[\u0022Transaction_Entity\u0022].Rows)\n{    \n     string account = \u0022IT00\u0022 \u002B num.ToString();\n     User findUser=OrgService.GetUser(account);\n     if(!users.Contains(findUser))\n          users.Add(findUser);\n      num \u002B= 1; \n}\nreturn users;",
+                "Include": true,
+                "Exclude": false,
+                "IsValid": true,
+                "DisplayString": "FormDataSet[\u0022Transaction_Entity.HandleAccount\u0022]",
+                "RuntimeDisplayString": null
+              }
+            ],
+            "ParticipantPolicy": {
+              "BParam1": false,
+              "PolicyType": "All"
+            },
+            "PolicyType": "All",
+            "CallDataMap": {
+              "Tables": [
+                {
+                  "DataSourceName": "Default",
+                  "IsRepeatableTable": false,
+                  "TableName": "$$root",
+                  "Columns": [
+                    {
+                      "ColumnName": "ParentInitiator",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": {
+                        "Type": "Code",
+                        "Constant": null,
+                        "CodeText": "FormDataSet[\u0022$$root.Initiator\u0022]"
+                      },
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": true,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Start_Time",
+                      "DataType": "System.DateTime",
+                      "FormDefaultValue": null,
+                      "DefaultValue": {
+                        "Type": "Code",
+                        "Constant": null,
+                        "CodeText": "FormDataSet[\u0022$$root.Start_Time\u0022]"
+                      },
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": true,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Owner",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": {
+                        "Type": "Code",
+                        "Constant": null,
+                        "CodeText": "FormDataSet[\u0022$$root.Owner\u0022]"
+                      },
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": true,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Dept",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": {
+                        "Type": "Code",
+                        "Constant": null,
+                        "CodeText": "FormDataSet[\u0022$$root.Dept\u0022]"
+                      },
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": true,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Vendor_Form_Link",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": {
+                        "Type": "Code",
+                        "Constant": null,
+                        "CodeText": "FormDataSet[\u0022$$root.TaskID\u0022]"
+                      },
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": true,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "ParentFormNO",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": {
+                        "Type": "Code",
+                        "Constant": null,
+                        "CodeText": "FormDataSet[\u0022$$root.FormNO\u0022]"
+                      },
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": true,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Vendor_Type",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": {
+                        "Type": "Code",
+                        "Constant": null,
+                        "CodeText": "FormDataSet[\u0022$$root.Vendor_Type\u0022]"
+                      },
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": true,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Communication_Language",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": {
+                        "Type": "Code",
+                        "Constant": null,
+                        "CodeText": "FormDataSet[\u0022$$root.Communication_Language\u0022]"
+                      },
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": true,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Vendor_Name",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": {
+                        "Type": "Code",
+                        "Constant": null,
+                        "CodeText": "FormDataSet[\u0022$$root.Vendor_Name\u0022]"
+                      },
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": true,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Tax_Number_Type",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": {
+                        "Type": "Code",
+                        "Constant": null,
+                        "CodeText": "FormDataSet[\u0022$$root.Tax_Number_Type\u0022]"
+                      },
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": true,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Tax",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": {
+                        "Type": "Code",
+                        "Constant": null,
+                        "CodeText": "FormDataSet[\u0022$$root.Tax\u0022]"
+                      },
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": true,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "FSC_Certificate_No",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": {
+                        "Type": "Code",
+                        "Constant": null,
+                        "CodeText": "FormDataSet[\u0022$$root.FSC_Certificate_No\u0022]"
+                      },
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": true,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Country",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": {
+                        "Type": "Code",
+                        "Constant": null,
+                        "CodeText": "FormDataSet[\u0022$$root.Country\u0022]"
+                      },
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": true,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "City",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": {
+                        "Type": "Code",
+                        "Constant": null,
+                        "CodeText": "FormDataSet[\u0022$$root.City\u0022]"
+                      },
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": true,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Postal_Code",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": {
+                        "Type": "Code",
+                        "Constant": null,
+                        "CodeText": "FormDataSet[\u0022$$root.Postal_Code\u0022]"
+                      },
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": true,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Street",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": {
+                        "Type": "Code",
+                        "Constant": null,
+                        "CodeText": "FormDataSet[\u0022$$root.Street\u0022]"
+                      },
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": true,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Email",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": {
+                        "Type": "Code",
+                        "Constant": null,
+                        "CodeText": "FormDataSet[\u0022$$root.Email\u0022]"
+                      },
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": true,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    }
+                  ],
+                  "ChildTables": [],
+                  "AllowAddRecord": true,
+                  "Filter": null,
+                  "CreateRecords": [],
+                  "UniqueId": null
+                }
+              ]
+            },
+            "ReturnDataMap": {
+              "Tables": []
+            }
+          },
+          {
+            "Name": "Split",
+            "NodeId": "node_ext-6415",
+            "Sprite": "{\u0022translationX\u0022:289.199951171875,\u0022translationY\u0022:212,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022Split\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Split\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Split",
+            "ElementTypeName": "SplitNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "SplitPathType": "All"
+          },
+          {
+            "Name": "Join",
+            "NodeId": "node_ext-6416",
+            "Sprite": "{\u0022translationX\u0022:527.199951171875,\u0022translationY\u0022:212,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022Join\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Join\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Join",
+            "ElementTypeName": "JoinNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "JoinType": "Normal"
+          },
+          {
+            "Name": "SPEC",
+            "NodeId": "node_ext-6417",
+            "Sprite": "{\u0022translationX\u0022:726.199951171875,\u0022translationY\u0022:212,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022SPEC\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Activity\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Activity",
+            "ElementTypeName": "ActivityNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "Form": null,
+            "MobileForm": "",
+            "BizTypeInheri": true,
+            "BizType": null,
+            "RecedeBackGroup": "A",
+            "RecedeBackExtGroups": [],
+            "PickBackUnProcessedStepOnly": true,
+            "Permision": [
+              "Abort",
+              "Transfer",
+              "RecedeBack",
+              "Consign",
+              "PickBack",
+              "Inform",
+              "SmartReturn"
+            ],
+            "SystemLinks": [
+              {
+                "SystemLinkType": "DirectSend",
+                "Enabled": false,
+                "ValidationGroup": ""
+              }
+            ],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ],
+            "ControlDataSet": {
+              "Tables": [
+                {
+                  "DataSourceName": "Default",
+                  "IsRepeatableTable": false,
+                  "TableName": "$$root",
+                  "Columns": [
+                    {
+                      "ColumnName": "FormNO",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Initiator",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Start_Time",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Owner",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Dept",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "SAP_Vendor_Number",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Vendor_Type",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Communication_Language",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Vendor_Name",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Tax_Number_Type",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Tax",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "FSC_Certificate_No",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Country",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Country_ID",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "City",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "City_ID",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Postal_Code",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Street",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Email",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Attachments",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Contract",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "FSC",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "\u71DF\u696D\u767B\u8A18\u8B49",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    }
+                  ],
+                  "ChildTables": [],
+                  "AllowAddRecord": false,
+                  "Filter": {
+                    "Params": []
+                  },
+                  "CreateRecords": [],
+                  "UniqueId": null
+                },
+                {
+                  "DataSourceName": "Default",
+                  "IsRepeatableTable": false,
+                  "TableName": "Transaction_Entity",
+                  "Columns": [
+                    {
+                      "ColumnName": "Company",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Region",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Site",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Detail",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Region_ID",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    }
+                  ],
+                  "ChildTables": [],
+                  "AllowAddRecord": false,
+                  "Filter": {
+                    "Params": []
+                  },
+                  "CreateRecords": [],
+                  "UniqueId": null
+                }
+              ]
+            },
+            "InitCreateRecordSet": {
+              "Tables": []
+            },
+            "Participants": [
+              {
+                "ParticipantType": 3,
+                "LParam1": 3,
+                "LParam2": 0,
+                "SParam1": "764580032827461",
+                "SParam2": "FunctionHead_SPEC",
+                "SParam3": null,
+                "SParam4": null,
+                "SParam5": null,
+                "Express": "Context.OrgService.GetRoleMembers(\u0022764580032827461\u0022)",
+                "Include": true,
+                "Exclude": false,
+                "IsValid": true,
+                "DisplayString": "\u7279\u5B9A\u89D2\u8272(FunctionHead_SPEC)",
+                "RuntimeDisplayString": null
+              }
+            ],
+            "ParticipantPolicy": {
+              "BParam1": true,
+              "PolicyType": "Share"
+            },
+            "NoParticipantsAction": "PreventSubmit",
+            "JumpIfSameOwnerWithInitiator": false,
+            "JumpIfSameOwnerWithPrevStep": false,
+            "JumpIfProcessed": false,
+            "TimeoutRule": {
+              "Calendar": {
+                "CalendarType": "StepOwner",
+                "CalendarName": ""
+              },
+              "Deadline": {
+                "Enabled": false,
+                "DeadlineType": "AfterEnterStep",
+                "Hours": 2
+              },
+              "Notify": {
+                "Enabled": false,
+                "FirsttimeHours": 1,
+                "FirsttimeMinutes": 0,
+                "Repeatable": true,
+                "RepeatHours": 1,
+                "RepeatMinutes": 0,
+                "UpgradeEnabled": false,
+                "UpTimeoutHours": 2,
+                "Recipients": [],
+                "MessageItems": []
+              },
+              "Activity": {
+                "Enabled": false,
+                "ActivityType": "AutoProcess",
+                "ActionName": null,
+                "GotoStep": null
+              }
+            }
+          },
+          {
+            "Name": "ACCT",
+            "NodeId": "node_ext-6418",
+            "Sprite": "{\u0022translationX\u0022:845.199951171875,\u0022translationY\u0022:212,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022ACCT\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Activity\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Activity",
+            "ElementTypeName": "ActivityNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "Form": null,
+            "MobileForm": "",
+            "BizTypeInheri": true,
+            "BizType": null,
+            "RecedeBackGroup": "A",
+            "RecedeBackExtGroups": [],
+            "PickBackUnProcessedStepOnly": true,
+            "Permision": [
+              "Abort",
+              "Transfer",
+              "RecedeBack",
+              "Consign",
+              "PickBack",
+              "Inform",
+              "SmartReturn"
+            ],
+            "SystemLinks": [
+              {
+                "SystemLinkType": "DirectSend",
+                "Enabled": false,
+                "ValidationGroup": ""
+              }
+            ],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ],
+            "ControlDataSet": {
+              "Tables": [
+                {
+                  "DataSourceName": "Default",
+                  "IsRepeatableTable": false,
+                  "TableName": "$$root",
+                  "Columns": [
+                    {
+                      "ColumnName": "FormNO",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Initiator",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Start_Time",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Owner",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Dept",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "SAP_Vendor_Number",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Vendor_Type",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Communication_Language",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Vendor_Name",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Tax_Number_Type",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Tax",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "FSC_Certificate_No",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Country",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Country_ID",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "City",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "City_ID",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Postal_Code",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Street",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Email",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Attachments",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Contract",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "FSC",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "\u71DF\u696D\u767B\u8A18\u8B49",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    }
+                  ],
+                  "ChildTables": [],
+                  "AllowAddRecord": false,
+                  "Filter": {
+                    "Params": []
+                  },
+                  "CreateRecords": [],
+                  "UniqueId": null
+                },
+                {
+                  "DataSourceName": "Default",
+                  "IsRepeatableTable": false,
+                  "TableName": "Transaction_Entity",
+                  "Columns": [
+                    {
+                      "ColumnName": "Company",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Region",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Site",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Detail",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Region_ID",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    }
+                  ],
+                  "ChildTables": [],
+                  "AllowAddRecord": false,
+                  "Filter": {
+                    "Params": []
+                  },
+                  "CreateRecords": [],
+                  "UniqueId": null
+                }
+              ]
+            },
+            "InitCreateRecordSet": {
+              "Tables": []
+            },
+            "Participants": [
+              {
+                "ParticipantType": 3,
+                "LParam1": 3,
+                "LParam2": 0,
+                "SParam1": "764579640717381",
+                "SParam2": "FunctionHead_ACCT",
+                "SParam3": null,
+                "SParam4": null,
+                "SParam5": null,
+                "Express": "Context.OrgService.GetRoleMembers(\u0022764579640717381\u0022)",
+                "Include": true,
+                "Exclude": false,
+                "IsValid": true,
+                "DisplayString": "\u7279\u5B9A\u89D2\u8272(FunctionHead_ACCT)",
+                "RuntimeDisplayString": null
+              }
+            ],
+            "ParticipantPolicy": {
+              "BParam1": true,
+              "PolicyType": "Share"
+            },
+            "NoParticipantsAction": "PreventSubmit",
+            "JumpIfSameOwnerWithInitiator": false,
+            "JumpIfSameOwnerWithPrevStep": false,
+            "JumpIfProcessed": false,
+            "TimeoutRule": {
+              "Calendar": {
+                "CalendarType": "StepOwner",
+                "CalendarName": ""
+              },
+              "Deadline": {
+                "Enabled": false,
+                "DeadlineType": "AfterEnterStep",
+                "Hours": 2
+              },
+              "Notify": {
+                "Enabled": false,
+                "FirsttimeHours": 1,
+                "FirsttimeMinutes": 0,
+                "Repeatable": true,
+                "RepeatHours": 1,
+                "RepeatMinutes": 0,
+                "UpgradeEnabled": false,
+                "UpTimeoutHours": 2,
+                "Recipients": [],
+                "MessageItems": []
+              },
+              "Activity": {
+                "Enabled": false,
+                "ActivityType": "AutoProcess",
+                "ActionName": null,
+                "GotoStep": null
+              }
+            }
+          },
+          {
+            "Name": "TOM",
+            "NodeId": "node_ext-6419",
+            "Sprite": "{\u0022translationX\u0022:964.199951171875,\u0022translationY\u0022:212,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022TOM\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Activity\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Activity",
+            "ElementTypeName": "ActivityNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "Form": null,
+            "MobileForm": "",
+            "BizTypeInheri": true,
+            "BizType": null,
+            "RecedeBackGroup": "A",
+            "RecedeBackExtGroups": [],
+            "PickBackUnProcessedStepOnly": true,
+            "Permision": [
+              "Abort",
+              "Transfer",
+              "RecedeBack",
+              "Consign",
+              "PickBack",
+              "Inform",
+              "SmartReturn"
+            ],
+            "SystemLinks": [
+              {
+                "SystemLinkType": "DirectSend",
+                "Enabled": false,
+                "ValidationGroup": ""
+              }
+            ],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ],
+            "ControlDataSet": {
+              "Tables": [
+                {
+                  "DataSourceName": "Default",
+                  "IsRepeatableTable": false,
+                  "TableName": "$$root",
+                  "Columns": [
+                    {
+                      "ColumnName": "FormNO",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Initiator",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Start_Time",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Owner",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Dept",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "SAP_Vendor_Number",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Vendor_Type",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Communication_Language",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Vendor_Name",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Tax_Number_Type",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Tax",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "FSC_Certificate_No",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Country",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Country_ID",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "City",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "City_ID",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Postal_Code",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Street",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Email",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Attachments",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Contract",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "FSC",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "\u71DF\u696D\u767B\u8A18\u8B49",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    }
+                  ],
+                  "ChildTables": [],
+                  "AllowAddRecord": false,
+                  "Filter": {
+                    "Params": []
+                  },
+                  "CreateRecords": [],
+                  "UniqueId": null
+                },
+                {
+                  "DataSourceName": "Default",
+                  "IsRepeatableTable": false,
+                  "TableName": "Transaction_Entity",
+                  "Columns": [
+                    {
+                      "ColumnName": "Company",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Region",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Site",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Detail",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Region_ID",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    }
+                  ],
+                  "ChildTables": [],
+                  "AllowAddRecord": false,
+                  "Filter": {
+                    "Params": []
+                  },
+                  "CreateRecords": [],
+                  "UniqueId": null
+                }
+              ]
+            },
+            "InitCreateRecordSet": {
+              "Tables": []
+            },
+            "Participants": [
+              {
+                "ParticipantType": 3,
+                "LParam1": 3,
+                "LParam2": 0,
+                "SParam1": "764579986055237",
+                "SParam2": "FunctionHead_TOM",
+                "SParam3": null,
+                "SParam4": null,
+                "SParam5": null,
+                "Express": "Context.OrgService.GetRoleMembers(\u0022764579986055237\u0022)",
+                "Include": true,
+                "Exclude": false,
+                "IsValid": true,
+                "DisplayString": "\u7279\u5B9A\u89D2\u8272(FunctionHead_TOM)",
+                "RuntimeDisplayString": null
+              }
+            ],
+            "ParticipantPolicy": {
+              "BParam1": true,
+              "PolicyType": "Share"
+            },
+            "NoParticipantsAction": "PreventSubmit",
+            "JumpIfSameOwnerWithInitiator": false,
+            "JumpIfSameOwnerWithPrevStep": false,
+            "JumpIfProcessed": false,
+            "TimeoutRule": {
+              "Calendar": {
+                "CalendarType": "StepOwner",
+                "CalendarName": ""
+              },
+              "Deadline": {
+                "Enabled": false,
+                "DeadlineType": "AfterEnterStep",
+                "Hours": 2
+              },
+              "Notify": {
+                "Enabled": false,
+                "FirsttimeHours": 1,
+                "FirsttimeMinutes": 0,
+                "Repeatable": true,
+                "RepeatHours": 1,
+                "RepeatMinutes": 0,
+                "UpgradeEnabled": false,
+                "UpTimeoutHours": 2,
+                "Recipients": [],
+                "MessageItems": []
+              },
+              "Activity": {
+                "Enabled": false,
+                "ActivityType": "AutoProcess",
+                "ActionName": null,
+                "GotoStep": null
+              }
+            }
+          },
+          {
+            "Name": "End",
+            "NodeId": "node_ext-6420",
+            "Sprite": "{\u0022translationX\u0022:1212.800048828125,\u0022translationY\u0022:212,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022End\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.End\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.End",
+            "ElementTypeName": "EndNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "EndType": "Approve"
+          },
+          {
+            "Name": "BT",
+            "NodeId": "node_ext-6421",
+            "Sprite": "{\u0022translationX\u0022:1084.5999755859375,\u0022translationY\u0022:212,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022BT\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Activity\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Activity",
+            "ElementTypeName": "ActivityNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "Form": null,
+            "MobileForm": "",
+            "BizTypeInheri": true,
+            "BizType": null,
+            "RecedeBackGroup": "A",
+            "RecedeBackExtGroups": [],
+            "PickBackUnProcessedStepOnly": true,
+            "Permision": [
+              "Abort",
+              "Transfer",
+              "RecedeBack",
+              "Consign",
+              "PickBack",
+              "Inform",
+              "SmartReturn"
+            ],
+            "SystemLinks": [
+              {
+                "SystemLinkType": "DirectSend",
+                "Enabled": false,
+                "ValidationGroup": ""
+              }
+            ],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ],
+            "ControlDataSet": {
+              "Tables": [
+                {
+                  "DataSourceName": "Default",
+                  "IsRepeatableTable": false,
+                  "TableName": "$$root",
+                  "Columns": [
+                    {
+                      "ColumnName": "FormNO",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Initiator",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Start_Time",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Owner",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Dept",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Vendor_Type",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Communication_Language",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Vendor_Name",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Tax_Number_Type",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Tax",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "FSC_Certificate_No",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Country",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Country_ID",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "City",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "City_ID",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Postal_Code",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Street",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Email",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Attachments",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Contract",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "FSC",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "\u71DF\u696D\u767B\u8A18\u8B49",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    }
+                  ],
+                  "ChildTables": [],
+                  "AllowAddRecord": false,
+                  "Filter": {
+                    "Params": []
+                  },
+                  "CreateRecords": [],
+                  "UniqueId": null
+                },
+                {
+                  "DataSourceName": "Default",
+                  "IsRepeatableTable": false,
+                  "TableName": "Transaction_Entity",
+                  "Columns": [
+                    {
+                      "ColumnName": "Company",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Region",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Site",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Detail",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Region_ID",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    }
+                  ],
+                  "ChildTables": [],
+                  "AllowAddRecord": true,
+                  "Filter": {
+                    "Params": []
+                  },
+                  "CreateRecords": [],
+                  "UniqueId": null
+                }
+              ]
+            },
+            "InitCreateRecordSet": {
+              "Tables": []
+            },
+            "Participants": [
+              {
+                "ParticipantType": 3,
+                "LParam1": 3,
+                "LParam2": 0,
+                "SParam1": "764493946306629",
+                "SParam2": "BT_DCC",
+                "SParam3": null,
+                "SParam4": null,
+                "SParam5": null,
+                "Express": "Context.OrgService.GetRoleMembers(\u0022764493946306629\u0022)",
+                "Include": true,
+                "Exclude": false,
+                "IsValid": true,
+                "DisplayString": "\u7279\u5B9A\u89D2\u8272(BT_DCC)",
+                "RuntimeDisplayString": null
+              }
+            ],
+            "ParticipantPolicy": {
+              "BParam1": true,
+              "PolicyType": "Share"
+            },
+            "NoParticipantsAction": "PreventSubmit",
+            "JumpIfSameOwnerWithInitiator": false,
+            "JumpIfSameOwnerWithPrevStep": false,
+            "JumpIfProcessed": false,
+            "TimeoutRule": {
+              "Calendar": {
+                "CalendarType": "StepOwner",
+                "CalendarName": ""
+              },
+              "Deadline": {
+                "Enabled": false,
+                "DeadlineType": "AfterEnterStep",
+                "Hours": 2
+              },
+              "Notify": {
+                "Enabled": false,
+                "FirsttimeHours": 1,
+                "FirsttimeMinutes": 0,
+                "Repeatable": true,
+                "RepeatHours": 1,
+                "RepeatMinutes": 0,
+                "UpgradeEnabled": false,
+                "UpTimeoutHours": 2,
+                "Recipients": [],
+                "MessageItems": []
+              },
+              "Activity": {
+                "Enabled": false,
+                "ActivityType": "AutoProcess",
+                "ActionName": null,
+                "GotoStep": null
+              }
+            }
+          },
+          {
+            "Name": "\u53EF\u4FEE\u6539\u4FE1\u7528\u984D\u5EA6",
+            "NodeId": "node_ext-5589",
+            "Sprite": "{\u0022translationX\u0022:841.4000244140625,\u0022translationY\u0022:144,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022\\u53ef\\u4fee\\u6539\\u4fe1\\u7528\\u984d\\u5ea6\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Inform\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Inform",
+            "ElementTypeName": "InformNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "InformType": "Inform",
+            "Recipients": [],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ]
+          },
+          {
+            "Name": "\u53EF\u4FEE\u6539SAP Vendor Number",
+            "NodeId": "node_ext-1879",
+            "Sprite": "{\u0022translationX\u0022:1084.5999755859375,\u0022translationY\u0022:144,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022\\u53ef\\u4fee\\u6539SAP Vendor Number\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Inform\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Inform",
+            "ElementTypeName": "InformNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "InformType": "Inform",
+            "Recipients": [],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ]
+          },
+          {
+            "Name": "\u89D2\u8272",
+            "NodeId": "node_ext-5590",
+            "Sprite": "{\u0022translationX\u0022:726.199951171875,\u0022translationY\u0022:292.8000183105469,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022\\u89d2\\u8272\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Inform\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Inform",
+            "ElementTypeName": "InformNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "InformType": "Inform",
+            "Recipients": [],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ]
+          },
+          {
+            "Name": "\u89D2\u82721",
+            "NodeId": "node_ext-5476",
+            "Sprite": "{\u0022translationX\u0022:845.199951171875,\u0022translationY\u0022:292.8000183105469,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022\\u89d2\\u82721\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Inform\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Inform",
+            "ElementTypeName": "InformNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "InformType": "Inform",
+            "Recipients": [],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ]
+          },
+          {
+            "Name": "\u89D2\u82722",
+            "NodeId": "node_ext-5476",
+            "Sprite": "{\u0022translationX\u0022:964.199951171875,\u0022translationY\u0022:292.8000183105469,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022\\u89d2\\u82722\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Inform\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Inform",
+            "ElementTypeName": "InformNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "InformType": "Inform",
+            "Recipients": [],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ]
+          },
+          {
+            "Name": "\u89D2\u82723",
+            "NodeId": "node_ext-5476",
+            "Sprite": "{\u0022translationX\u0022:1084.5999755859375,\u0022translationY\u0022:292.8000183105469,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022\\u89d2\\u82723\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Inform\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Inform",
+            "ElementTypeName": "InformNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "InformType": "Inform",
+            "Recipients": [],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ]
+          },
+          {
+            "Name": "SupplyChain",
+            "NodeId": "node_ext-6417",
+            "Sprite": "{\u0022translationX\u0022:610.1998901367188,\u0022translationY\u0022:212,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022SupplyChain\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Activity\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Activity",
+            "ElementTypeName": "ActivityNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "Form": null,
+            "MobileForm": "",
+            "BizTypeInheri": true,
+            "BizType": null,
+            "RecedeBackGroup": "A",
+            "RecedeBackExtGroups": [],
+            "PickBackUnProcessedStepOnly": true,
+            "Permision": [
+              "Abort",
+              "Transfer",
+              "RecedeBack",
+              "Consign",
+              "PickBack",
+              "Inform",
+              "SmartReturn"
+            ],
+            "SystemLinks": [
+              {
+                "SystemLinkType": "DirectSend",
+                "Enabled": false,
+                "ValidationGroup": ""
+              }
+            ],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ],
+            "ControlDataSet": {
+              "Tables": [
+                {
+                  "DataSourceName": "Default",
+                  "IsRepeatableTable": false,
+                  "TableName": "$$root",
+                  "Columns": [
+                    {
+                      "ColumnName": "FormNO",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Initiator",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Start_Time",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Owner",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Dept",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "SAP_Vendor_Number",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Vendor_Type",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Communication_Language",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Vendor_Name",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Tax_Number_Type",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Tax",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "FSC_Certificate_No",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Country",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Country_ID",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "City",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "City_ID",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Postal_Code",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Street",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Email",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Attachments",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Contract",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "FSC",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "\u71DF\u696D\u767B\u8A18\u8B49",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    }
+                  ],
+                  "ChildTables": [],
+                  "AllowAddRecord": false,
+                  "Filter": {
+                    "Params": []
+                  },
+                  "CreateRecords": [],
+                  "UniqueId": null
+                },
+                {
+                  "DataSourceName": "Default",
+                  "IsRepeatableTable": false,
+                  "TableName": "Transaction_Entity",
+                  "Columns": [
+                    {
+                      "ColumnName": "Company",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Region",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Site",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Detail",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    },
+                    {
+                      "ColumnName": "Region_ID",
+                      "DataType": "System.String",
+                      "FormDefaultValue": null,
+                      "DefaultValue": null,
+                      "SaveValue": null,
+                      "FilterValue": null,
+                      "AllowRead": true,
+                      "AllowWrite": false,
+                      "ShowSpoor": false,
+                      "Digit": 2,
+                      "MaxLength": 50,
+                      "UniqueId": null,
+                      "Ctype": null
+                    }
+                  ],
+                  "ChildTables": [],
+                  "AllowAddRecord": false,
+                  "Filter": {
+                    "Params": []
+                  },
+                  "CreateRecords": [],
+                  "UniqueId": null
+                }
+              ]
+            },
+            "InitCreateRecordSet": {
+              "Tables": []
+            },
+            "Participants": [
+              {
+                "ParticipantType": 3,
+                "LParam1": 3,
+                "LParam2": 0,
+                "SParam1": "764580032827461",
+                "SParam2": "FunctionHead_SPEC",
+                "SParam3": null,
+                "SParam4": null,
+                "SParam5": null,
+                "Express": "Context.OrgService.GetRoleMembers(\u0022764580032827461\u0022)",
+                "Include": true,
+                "Exclude": false,
+                "IsValid": true,
+                "DisplayString": "\u7279\u5B9A\u89D2\u8272(FunctionHead_SPEC)",
+                "RuntimeDisplayString": null
+              }
+            ],
+            "ParticipantPolicy": {
+              "BParam1": true,
+              "PolicyType": "Share"
+            },
+            "NoParticipantsAction": "PreventSubmit",
+            "JumpIfSameOwnerWithInitiator": false,
+            "JumpIfSameOwnerWithPrevStep": false,
+            "JumpIfProcessed": false,
+            "TimeoutRule": {
+              "Calendar": {
+                "CalendarType": "StepOwner",
+                "CalendarName": ""
+              },
+              "Deadline": {
+                "Enabled": false,
+                "DeadlineType": "AfterEnterStep",
+                "Hours": 2
+              },
+              "Notify": {
+                "Enabled": false,
+                "FirsttimeHours": 1,
+                "FirsttimeMinutes": 0,
+                "Repeatable": true,
+                "RepeatHours": 1,
+                "RepeatMinutes": 0,
+                "UpgradeEnabled": false,
+                "UpTimeoutHours": 2,
+                "Recipients": [],
+                "MessageItems": []
+              },
+              "Activity": {
+                "Enabled": false,
+                "ActivityType": "AutoProcess",
+                "ActionName": null,
+                "GotoStep": null
+              }
+            }
+          },
+          {
+            "Name": "Approval",
+            "NodeId": "node_ext-5806",
+            "Sprite": "{\u0022translationX\u0022:138.55557250976562,\u0022translationY\u0022:212,\u0022x\u0022:0,\u0022y\u0022:0,\u0022width\u0022:32,\u0022height\u0022:32,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022fillStyle\u0022:\u0022rgba(0, 0, 0, 0)\u0022,\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022Approval\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false,\u0022background\u0022:{\u0022fillStyle\u0022:\u0022none\u0022}}},\u0022xclass\u0022:\u0022ZHYSoft.bpm.src.flowchart.sprite.Activity\u0022,\u0022surfaceName\u0022:\u0022shape\u0022}",
+            "propertyXClass": "ZHYSoft.bpm.src.flowchart.property.Activity",
+            "ElementTypeName": "ActivityNode",
+            "Rules": [],
+            "Events": [],
+            "NodeExtAttrs": [],
+            "Form": null,
+            "MobileForm": "",
+            "BizTypeInheri": true,
+            "BizType": null,
+            "RecedeBackGroup": "",
+            "RecedeBackExtGroups": [],
+            "PickBackUnProcessedStepOnly": true,
+            "Permision": [
+              "Abort",
+              "Transfer",
+              "BatchApprove",
+              "RecedeBack",
+              "Consign",
+              "PickBack",
+              "Inform",
+              "SmartReturn"
+            ],
+            "SystemLinks": [
+              {
+                "SystemLinkType": "DirectSend",
+                "Enabled": false,
+                "ValidationGroup": ""
+              }
+            ],
+            "MessageItems": [
+              {
+                "ProviderName": "Mail",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": "",
+                "Message": "",
+                "AttachmentsCode": ""
+              },
+              {
+                "ProviderName": "DingTalk",
+                "Enabled": true,
+                "Inheri": true,
+                "Title": null,
+                "Message": null,
+                "AttachmentsCode": null
+              }
+            ],
+            "ControlDataSet": {
+              "Tables": []
+            },
+            "InitCreateRecordSet": {
+              "Tables": []
+            },
+            "Participants": [
+              {
+                "ParticipantType": 3,
+                "LParam1": 0,
+                "LParam2": 0,
+                "SParam1": null,
+                "SParam2": null,
+                "SParam3": null,
+                "SParam4": null,
+                "SParam5": null,
+                "Express": "Initiator",
+                "Include": true,
+                "Exclude": false,
+                "IsValid": true,
+                "DisplayString": "\u63D0\u4EA4\u4EBA",
+                "RuntimeDisplayString": null
+              }
+            ],
+            "ParticipantPolicy": {
+              "BParam1": true,
+              "PolicyType": "Share"
+            },
+            "NoParticipantsAction": "PreventSubmit",
+            "JumpIfSameOwnerWithInitiator": false,
+            "JumpIfSameOwnerWithPrevStep": false,
+            "JumpIfProcessed": false,
+            "TimeoutRule": {
+              "Calendar": {
+                "CalendarType": "Specific",
+                "CalendarName": "Default"
+              },
+              "Deadline": {
+                "Enabled": true,
+                "DeadlineType": "Absolute",
+                "Hours": 2,
+                "Date": "FormDataSet[\u0022$$root.Start_Time\u0022]"
+              },
+              "Notify": {
+                "Enabled": false,
+                "FirsttimeHours": 1,
+                "FirsttimeMinutes": 0,
+                "Repeatable": true,
+                "RepeatHours": 1,
+                "RepeatMinutes": 0,
+                "UpgradeEnabled": false,
+                "UpTimeoutHours": 2,
+                "Recipients": [],
+                "MessageItems": []
+              },
+              "Activity": {
+                "Enabled": true,
+                "ActivityType": "AutoProcess",
+                "ActionName": "Agree",
+                "GotoStep": null
+              }
+            }
+          }
+        ],
+        "Links": [
+          {
+            "DisplayString": "Agree",
+            "FromNodeId": "ACCT",
+            "FromPoint": "ActivityRightMiddle",
+            "ToNodeId": "TOM",
+            "ToPoint": "ActivityLeftMiddle",
+            "LineType": "ZigZag",
+            "LinkID": "line_ext-5924",
+            "Sprite": "{\u0022translationX\u0022:20,\u0022translationY\u0022:20,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022#4677bf\u0022,\u0022dockIndex\u0022:1,\u0022points\u0022:[{\u0022x\u0022:858.199951171875,\u0022y\u0022:208},{\u0022x\u0022:942.199951171875,\u0022y\u0022:208}],\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022Agree\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false},\u0022startArrow\u0022:{\u0022type\u0022:\u0022none\u0022},\u0022endArrow\u0022:{\u0022type\u0022:\u0022solidArrow\u0022}},\u0022xclass\u0022:\u0022ZHYSoft.src.flowchart.link.ZigZag\u0022,\u0022surfaceName\u0022:\u0022link\u0022}",
+            "ConditionType": "True",
+            "ValidationGroup": null,
+            "ProcessConfirmType": "None",
+            "PromptMessage": "",
+            "DefaultRoute": false,
+            "Events": []
+          },
+          {
+            "DisplayString": "Agree",
+            "FromNodeId": "SupplyChain",
+            "FromPoint": "ActivityRightMiddle",
+            "ToNodeId": "SPEC",
+            "ToPoint": "ActivityLeftMiddle",
+            "LineType": "ZigZag",
+            "LinkID": "line_ext-5925",
+            "Sprite": "{\u0022translationX\u0022:0,\u0022translationY\u0022:0,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022#4677bf\u0022,\u0022dockIndex\u0022:1,\u0022points\u0022:[{\u0022x\u0022:643.1998901367188,\u0022y\u0022:228},{\u0022x\u0022:724.199951171875,\u0022y\u0022:228}],\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022Agree\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false},\u0022startArrow\u0022:{\u0022type\u0022:\u0022none\u0022},\u0022endArrow\u0022:{\u0022type\u0022:\u0022solidArrow\u0022}},\u0022xclass\u0022:\u0022ZHYSoft.src.flowchart.link.ZigZag\u0022,\u0022surfaceName\u0022:\u0022link\u0022}",
+            "ConditionType": "True",
+            "ValidationGroup": "",
+            "ProcessConfirmType": "None",
+            "PromptMessage": "",
+            "DefaultRoute": false,
+            "Events": []
+          },
+          {
+            "DisplayString": "Agree",
+            "FromNodeId": "SPEC",
+            "FromPoint": "ActivityRightMiddle",
+            "ToNodeId": "ACCT",
+            "ToPoint": "ActivityLeftMiddle",
+            "LineType": "ZigZag",
+            "LinkID": "line_ext-5926",
+            "Sprite": "{\u0022translationX\u0022:20,\u0022translationY\u0022:20,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022#4677bf\u0022,\u0022dockIndex\u0022:1,\u0022points\u0022:[{\u0022x\u0022:739.199951171875,\u0022y\u0022:208},{\u0022x\u0022:823.199951171875,\u0022y\u0022:208}],\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022Agree\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false},\u0022startArrow\u0022:{\u0022type\u0022:\u0022none\u0022},\u0022endArrow\u0022:{\u0022type\u0022:\u0022solidArrow\u0022}},\u0022xclass\u0022:\u0022ZHYSoft.src.flowchart.link.ZigZag\u0022,\u0022surfaceName\u0022:\u0022link\u0022}",
+            "ConditionType": "True",
+            "ValidationGroup": null,
+            "ProcessConfirmType": "None",
+            "PromptMessage": "",
+            "DefaultRoute": false,
+            "Events": []
+          },
+          {
+            "DisplayString": "Agree",
+            "FromNodeId": "BT",
+            "FromPoint": "ActivityRightMiddle",
+            "ToNodeId": "End",
+            "ToPoint": "ActivityLeftMiddle",
+            "LineType": "ZigZag",
+            "LinkID": "line_ext-5927",
+            "Sprite": "{\u0022translationX\u0022:20,\u0022translationY\u0022:20,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022#4677bf\u0022,\u0022dockIndex\u0022:1,\u0022points\u0022:[{\u0022x\u0022:1097.5999755859375,\u0022y\u0022:208},{\u0022x\u0022:1190.800048828125,\u0022y\u0022:208}],\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022Agree\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false},\u0022startArrow\u0022:{\u0022type\u0022:\u0022none\u0022},\u0022endArrow\u0022:{\u0022type\u0022:\u0022solidArrow\u0022}},\u0022xclass\u0022:\u0022ZHYSoft.src.flowchart.link.ZigZag\u0022,\u0022surfaceName\u0022:\u0022link\u0022}",
+            "ConditionType": "True",
+            "ValidationGroup": null,
+            "ProcessConfirmType": "None",
+            "PromptMessage": "",
+            "DefaultRoute": false,
+            "Events": []
+          },
+          {
+            "DisplayString": "Agree",
+            "FromNodeId": "TOM",
+            "FromPoint": "ActivityRightMiddle",
+            "ToNodeId": "BT",
+            "ToPoint": "ActivityLeftMiddle",
+            "LineType": "ZigZag",
+            "LinkID": "line_ext-5928",
+            "Sprite": "{\u0022translationX\u0022:20,\u0022translationY\u0022:20,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022#4677bf\u0022,\u0022dockIndex\u0022:1,\u0022points\u0022:[{\u0022x\u0022:977.199951171875,\u0022y\u0022:208},{\u0022x\u0022:1062.5999755859375,\u0022y\u0022:208}],\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022Agree\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false},\u0022startArrow\u0022:{\u0022type\u0022:\u0022none\u0022},\u0022endArrow\u0022:{\u0022type\u0022:\u0022solidArrow\u0022}},\u0022xclass\u0022:\u0022ZHYSoft.src.flowchart.link.ZigZag\u0022,\u0022surfaceName\u0022:\u0022link\u0022}",
+            "ConditionType": "True",
+            "ValidationGroup": "",
+            "ProcessConfirmType": "None",
+            "PromptMessage": "",
+            "DefaultRoute": false,
+            "Events": []
+          },
+          {
+            "DisplayString": "Agree",
+            "FromNodeId": "Approval",
+            "FromPoint": "ActivityRightMiddle",
+            "ToNodeId": "Split",
+            "ToPoint": "ActivityLeftMiddle",
+            "LineType": "ZigZag",
+            "LinkID": "line_ext-5929",
+            "Sprite": "{\u0022translationX\u0022:0,\u0022translationY\u0022:0,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022#4677bf\u0022,\u0022dockIndex\u0022:1,\u0022points\u0022:[{\u0022x\u0022:171.55557250976562,\u0022y\u0022:228},{\u0022x\u0022:287.199951171875,\u0022y\u0022:228}],\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022Agree\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false},\u0022startArrow\u0022:{\u0022type\u0022:\u0022none\u0022},\u0022endArrow\u0022:{\u0022type\u0022:\u0022solidArrow\u0022}},\u0022xclass\u0022:\u0022ZHYSoft.src.flowchart.link.ZigZag\u0022,\u0022surfaceName\u0022:\u0022link\u0022}",
+            "ConditionType": "True",
+            "ValidationGroup": "",
+            "ProcessConfirmType": "None",
+            "PromptMessage": "",
+            "DefaultRoute": false,
+            "Events": []
+          },
+          {
+            "DisplayString": null,
+            "FromNodeId": "Split",
+            "FromPoint": "ActivityRightMiddle",
+            "ToNodeId": "Vendor Details",
+            "ToPoint": "ActivityLeftMiddle",
+            "LineType": "ZigZag",
+            "LinkID": "line_ext-5930",
+            "Sprite": "{\u0022translationX\u0022:-80.800048828125,\u0022translationY\u0022:16.79998779296875,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022#4677bf\u0022,\u0022dockIndex\u0022:1,\u0022points\u0022:[{\u0022x\u0022:403,\u0022y\u0022:211.20001220703125},{\u0022x\u0022:484.77777099609375,\u0022y\u0022:211.20001220703125}],\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false},\u0022startArrow\u0022:{\u0022type\u0022:\u0022none\u0022},\u0022endArrow\u0022:{\u0022type\u0022:\u0022solidArrow\u0022}},\u0022xclass\u0022:\u0022ZHYSoft.src.flowchart.link.ZigZag\u0022,\u0022surfaceName\u0022:\u0022link\u0022}",
+            "ConditionType": "True",
+            "ValidationGroup": null,
+            "ProcessConfirmType": "None",
+            "PromptMessage": "",
+            "DefaultRoute": false,
+            "Events": []
+          },
+          {
+            "DisplayString": null,
+            "FromNodeId": "Vendor Details",
+            "FromPoint": "ActivityRightMiddle",
+            "ToNodeId": "Join",
+            "ToPoint": "ActivityLeftMiddle",
+            "LineType": "ZigZag",
+            "LinkID": "line_ext-5931",
+            "Sprite": "{\u0022translationX\u0022:-80.800048828125,\u0022translationY\u0022:16.79998779296875,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022#4677bf\u0022,\u0022dockIndex\u0022:1,\u0022points\u0022:[{\u0022x\u0022:519.7777709960938,\u0022y\u0022:211.20001220703125},{\u0022x\u0022:606,\u0022y\u0022:211.20001220703125}],\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false},\u0022startArrow\u0022:{\u0022type\u0022:\u0022none\u0022},\u0022endArrow\u0022:{\u0022type\u0022:\u0022solidArrow\u0022}},\u0022xclass\u0022:\u0022ZHYSoft.src.flowchart.link.ZigZag\u0022,\u0022surfaceName\u0022:\u0022link\u0022}",
+            "ConditionType": "True",
+            "ValidationGroup": null,
+            "ProcessConfirmType": "None",
+            "PromptMessage": "",
+            "DefaultRoute": false,
+            "Events": []
+          },
+          {
+            "DisplayString": null,
+            "FromNodeId": "Join",
+            "FromPoint": "ActivityRightMiddle",
+            "ToNodeId": "SupplyChain",
+            "ToPoint": "ActivityLeftMiddle",
+            "LineType": "ZigZag",
+            "LinkID": "line_ext-5932",
+            "Sprite": "{\u0022translationX\u0022:0,\u0022translationY\u0022:0,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022#4677bf\u0022,\u0022dockIndex\u0022:1,\u0022points\u0022:[{\u0022x\u0022:560.199951171875,\u0022y\u0022:228},{\u0022x\u0022:608.1998901367188,\u0022y\u0022:228}],\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false},\u0022startArrow\u0022:{\u0022type\u0022:\u0022none\u0022},\u0022endArrow\u0022:{\u0022type\u0022:\u0022solidArrow\u0022}},\u0022xclass\u0022:\u0022ZHYSoft.src.flowchart.link.ZigZag\u0022,\u0022surfaceName\u0022:\u0022link\u0022}",
+            "ConditionType": "True",
+            "ValidationGroup": null,
+            "ProcessConfirmType": "None",
+            "PromptMessage": "",
+            "DefaultRoute": false,
+            "Events": []
+          },
+          {
+            "DisplayString": "\u63D0\u4EA4",
+            "FromNodeId": "Start",
+            "FromPoint": "ActivityRightMiddle",
+            "ToNodeId": "Approval",
+            "ToPoint": "ActivityLeftMiddle",
+            "LineType": "ZigZag",
+            "LinkID": "line_ext-5933",
+            "Sprite": "{\u0022translationX\u0022:0,\u0022translationY\u0022:0,\u0022lineWidth\u0022:1,\u0022lineDash\u0022:[],\u0022strokeStyle\u0022:\u0022#4677bf\u0022,\u0022dockIndex\u0022:1,\u0022points\u0022:[{\u0022x\u0022:67.6444091796875,\u0022y\u0022:228},{\u0022x\u0022:136.55557250976562,\u0022y\u0022:228}],\u0022sprites\u0022:{\u0022text\u0022:{\u0022text\u0022:\u0022\\u63d0\\u4ea4\u0022,\u0022fillStyle\u0022:\u0022#000000\u0022,\u0022fontFamily\u0022:\u0022sans-serif\u0022,\u0022fontSize\u0022:\u002212px\u0022,\u0022fontWeight\u0022:\u0022\u0022,\u0022fontStyle\u0022:\u0022\u0022,\u0022underline\u0022:false},\u0022startArrow\u0022:{\u0022type\u0022:\u0022none\u0022},\u0022endArrow\u0022:{\u0022type\u0022:\u0022solidArrow\u0022}},\u0022xclass\u0022:\u0022ZHYSoft.src.flowchart.link.ZigZag\u0022,\u0022surfaceName\u0022:\u0022link\u0022}",
+            "ConditionType": "True",
+            "ValidationGroup": null,
+            "ProcessConfirmType": "None",
+            "PromptMessage": "",
+            "DefaultRoute": false,
+            "Events": []
+          }
+        ]
+      }
+    }
+  ]
+}
